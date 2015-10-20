@@ -1,0 +1,10 @@
+extends layout
+block head
+  title #{post.title} | JSON Tutorial
+  meta(name='description', content='#{post.metaDesc}')
+block sidebar
+  include includes/sidebar-footer
+block supplement
+  include includes/sidebar-posts
+block content
+  include includes/post

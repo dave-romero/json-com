@@ -1,0 +1,11 @@
+extends layout
+block head
+  title  #{tag} | JSON Tutorial
+  meta(name='description', content='')
+block sidebar
+  include includes/sidebar-footer
+block supplement
+  include includes/sidebar-posts
+block content
+  - each post in posts
+    include includes/post-preview

@@ -1,0 +1,136 @@
+extend layout
+block head
+  title JSON
+  meta(name='description', content='JSON is a light-weight text-based open standard designed for human-readable data. It is the most widely used format for exchanging data on the web.')
+block sidebar
+  a.toc_title(href='#json') JSON
+  ul.toc_section
+    li: a(href='/#example-object') Example Object
+    li: a(href='/#example-array') Example Array
+    li: a(href='/#why-json') Why JSON?
+    li: a(href='/#why-not-xml') JSON vs XML
+  a.toc_title(href='#data-types') Data Types
+  ul.toc_section
+    li: a(href='/#number') Number
+    li: a(href='/#string') String
+    li: a(href='/#boolean') Boolean
+    li: a(href='/#array') Array
+    li: a(href='/#object') Object
+    li: a(href='/#null') Null
+  a.toc_title(href='#unsupported-types') Unsupported Types
+  ul.toc_section
+    li: a(href='/#undefined') Undefined
+    li: a(href='/#date') Date
+    li: a(href='/#error') Error
+    li: a(href='/#regular-expression') Regular Expression
+    li: a(href='/#function') Function
+  a.toc_title(href='#example') Examples
+  ul.toc_section
+    li: a(href='/#example-mixed') Mixed Types
+  include includes/sidebar-footer
+block supplement
+  include includes/sidebar-posts
+block content
+  h1#json JSON (JavaScript Object Notation)
+  p JSON is a light-weight text-based open standard designed for human-readable data. It is the most widely used format for exchanging data on the web. It originates from the JavaScript language and is represented with two primary data structures: ordered lists (recognized as 'arrays') and name/value pairs (recognized as 'objects').
+  h3#example-object Example Object
+  pre.
+    var myObject = {
+     "first": "John",
+     "last": "Doe",
+     "age": 39,
+     "sex": "M",
+     "salary": 70000,
+     "registered": true
+    };
+ 
+  h3#example-array Example Array
+  pre.
+    var myArray = [
+      { "name": "John Doe", "age": 29 }, 
+      { "name": "Anna Smith", "age": 24 }, 
+      { "name": "Peter Jones", "age": 39 }
+    ];
+  h3#why-json Why JSON?
+  p The JSON standard is language-independent and its data structures, arrays and objects, are universally recognized. These structures are supported in some way by nearly all modern programming languages and are familiar to nearly all programmers.  These qualities make it an ideal format for data interchange on the web.
+  h3#json-vs-xml JSON vs XML
+  p The XML specification does not match the data model for most programming languages which makes it slow and tedious for programmers to parse.  Compared to JSON, XML has a low data-to-markup ratio which results in it being more difficult for humans to read and write.
+  h2#data-types Data Types
+  p#number
+    b.header Number
+    code { "myNum": 123.456 }
+    br
+    | A series of numbers; decimals ok; double-precision floating-point format.
+  p#string
+    b.header String
+    code { "myString": "abcdef" }
+    br
+    | A series of characters (letters, numbers, or symbols); double-quoted UTF-8 with backslash escaping.
+  p#boolean
+    b.header Boolean
+    code { "myBool": true }
+    br
+    | True or false.
+  p#array
+    b.header Array
+    code { "myArray": [ "a", "b", "c", "d" ] }
+    br
+    | Sequence of comma-separated values (any data type); enclosed in square brackets.
+  p#object
+    b.header Object
+    code { "myObject": { "id": 7 } };
+    br
+    | Unordered collection of comma-separated key/value pairs; enclosed in curly braces; properties (keys) are distinct strings.
+  p#null
+    b.header Null
+    code { "myNull": null }
+    br
+    | Variable with null (empty) value.
+  h2#unsupported-types Unsupported Data Types
+  p#undefined
+    b.header Undefined
+    code var myUndefined;
+    br
+    | Variable with no value assigned.
+  p#date
+    b.header Date
+    code var myDate = new Date();
+    br
+    | Object used to work with dates and times.
+  p#error
+    b.header Error
+    code var myError = new Error();
+    br
+    | Object containing information about errors.
+  p#regular-expression
+    b.header Regular Expression
+    code var myRegEx = /json/i;
+    br
+    | Variable containing a sequence of characters that form a search pattern.
+  p#function
+    b.header Function
+    code var myFunction = function(){};
+    br
+    | Variable containing a block of code designed to perform a particular task.
+  h2#examples Examples
+  h3#mixed-example Mixed Data Types
+  pre.
+    var myObject = {
+     "myNumber": 123.456,
+     "myString": "abcdef",
+     "myBool": true,
+     "myArray": [ "a", "b", "c", "d" ],
+     "myObject": { "id": 7 },
+     "myNull": null
+    };
+
+  div#disqus_thread
+    script
+      var disqus_shortname = 'json-com'; // required: replace example with your forum shortname
+      (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    
+    

@@ -1,0 +1,190 @@
+extend layout
+block head
+  title JSON Example
+  meta(name='description', content='JSON is a light-weight text-based open standard designed for human-readable data. It is the most widely used format for exchanging data on the web.')
+block sidebar
+  a.toc_title(href='#json-example') JSON Example
+  ul.toc_section
+    li: a(href='#array') Array
+    li: a(href='#array-with-objects') Array with Objects
+    li: a(href='#object' ) Object
+    li: a(href='#object-with-nested-array') Objfect with Nested Array
+    li: a(href='#object-with-nested-object') Object with Nested Object
+    li: a(href='#object-with-nested-array-and-object') Object with Nested Arrays & Objects
+  include includes/sidebar-footer
+block supplement
+  include includes/sidebar-posts
+block content
+  h1#json-example JSON Example
+  h3#array Array
+  p Array elements are generally of a basic type (number, string, boolean, or null), however can also be a nested array or object (see 
+    a(href='/#data-types') Data Structures
+    | ). Elements are comma-delimited and contained within open and closed brackets.
+  pre.
+    var myArray = [ "John Doe", 29, true, null ];
+              
+  pre.
+    var arrayNesting = [ [], {} ];
+              
+  tt myArray[2]
+  code
+    returns
+    b true
+  h3#array-with-objects Array with Objects
+  p This array contains comma-delimited objects which each contain multiple comma-delimited key/value pairs.  Objects within an array can be accessed using the array name and index.
+  pre.
+    var myArray = [
+      { "name": "John Doe", "age": 29 }, 
+      { "name": "Anna Smith", "age": 24 }, 
+      { "name": "Peter Jones", "age": 39 }
+    ];
+              
+  tt myArray[0].name
+  code
+    returns
+    b John Doe
+  h3#object Object
+  | This object contains multiple comma-delimited key/value pairs. Object properties can be accessed using the the object name followed by a period and property name -or- can be accessed like an array using the property name in quotes (in place of an index).
+  pre.
+    var myObject = {
+     "first": "John",
+     "last": "Doe",
+     "age": 39,
+     "sex": "M",
+     "salary": 70000,
+     "registered": true
+    };
+              
+  tt myObject.salary
+  code
+    returns
+    b 70000
+  br
+  br
+  tt myObject["salary"]
+  code
+    returns
+    b 70000
+  h3#object-with-nested-array Object with Nested Array
+  p This object contains multiple comma-delimited key/value pairs and a nested array. The nested array can be accessed with the object name, property or 'key' containing the array and an array index.
+  pre.
+    var myObject = {
+     "first": "John",
+     "last": "Doe",
+     "age": 39,
+     "sex": "M",
+     "salary": 70000,
+     "registered": true,
+     "interests": [ "Reading", "Mountain Biking", "Hacking" ]
+    };
+              
+  tt myObject.interests[0]
+  code
+    returns
+    b Reading
+  br
+  br
+  tt myObject["interests"][0]
+  code
+    returns
+    b Reading
+  h3#object-with-nested-object Object with Nested Object
+  p This object contains multiple comma-delimited key/value pairs and a nested object. To access an object within an object, property names or 'keys' can be chained together -or- property names can be used like an array in place of indexes.
+  pre.
+    var myObject = {
+     "first": "John",
+     "last": "Doe",
+     "age": 39,
+     "sex": "M",
+     "salary": 70000,
+     "registered": true,
+     "favorites": {
+      "color": "Blue",
+      "sport": "Soccer",
+      "food": "Spaghetti"
+     } 
+    };
+              
+  tt myObject.favorites.food
+  code
+    returns
+    b Spaghetti
+  br
+  br
+  tt myObject["favorites"]["food"]
+  code
+    returns
+    b Spaghetti
+  h3#object-with-nested-array-and-object Object with Nested Arrays and Objects
+  p This object is more complex and typical of what might come from an API.  It contains key/value pairs, nested arrays and nested objects.  Any of its elements can be accessed with a combination of the above techniques.
+  pre.
+    var myObject = {
+      "first": "John",
+      "last": "Doe",
+      "age": 39,
+      "sex": "M",
+      "salary": 70000,
+      "registered": true,
+      "interests": [ "Reading", "Mountain Biking", "Hacking" ],
+      "favorites": {
+        "color": "Blue",
+        "sport": "Soccer",
+        "food": "Spaghetti"
+      }, 
+      "skills": [
+        {
+          "category": "JavaScript",
+          "tests": [
+            { "name": "One", "score": 90 },
+            { "name": "Two", "score": 96 }
+          ] 
+        },
+        {
+          "category": "CouchDB",
+          "tests": [
+            { "name": "One", "score": 79 },
+            { "name": "Two", "score": 84 }
+          ] 
+        },
+        {
+          "category": "Node.js",
+          "tests": [
+            { "name": "One", "score": 97 },
+            { "name": "Two", "score": 93 }
+          ] 
+        }
+      ]
+    };
+              
+  tt myObject.skills[0].category
+  code
+    returns
+    b JavaScript
+  br
+  br
+  tt myObject["skills"][0]["category"]
+  code
+    returns
+    b JavaScript
+  br
+  br
+  tt myObject.skills[1].tests[0].score
+  code
+    returns
+    b 79
+  br
+  br
+  tt myObject["skills"][1]["tests"][0]["score"]
+  code
+    returns
+    b 79
+  div#disqus_thread
+    script
+      var disqus_shortname = 'json-com'; // required: replace example with your forum shortname
+      (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    
+    

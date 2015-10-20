@@ -1,0 +1,18 @@
+rss(version='2.0')
+  channel
+    title JSON Tutorial
+    <link>#{baseUrl}</link>
+    //-atom:link(href='http://www.json.com/json-tutorial/rss', rel='self',type='application/rss+xml')
+    language en-us
+    description JSON is a light-weight text-based open standard designed for human-readable data. It is the most widely used format for exchanging data on the web.
+    each post in posts
+      item
+        title #{post.title}
+        <link>#{baseUrl}#{post.slug}</link>
+        description
+          | <![CDATA[
+          | #{post.summary}
+          p: a(href='#{baseUrl}#{post.slug}', rel="nofollow") Read more &raquo;
+          | ]]>
+        pubDate #{post.date}
+        guid(isPermaLink='false') #{baseUrl}#{post.slug}

@@ -1,0 +1,247 @@
+!!!5
+html
+  head
+    title JSON Cheat Sheet     
+    link(rel='stylesheet', href='https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css')
+    script(src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js")
+    style
+      body{display:block; margin:0; padding:0; padding-top:48px; font-size:12px;}
+      pre{font-size:12px;}
+      pre.prettyprint{padding:9.5px; border:1px solid #ccc; font-size:10px;}
+      td pre.prettyprint{ padding:0; border:0; background:none; margin:0; font-size:10px;}
+      span.space{padding-left:10px; padding-right:5px;}
+      h3{padding-top:0px;}
+      em{font-weight:bold; font-style:normal;}
+      p{font-size:11px; margin-bottom:11px;}
+      .navbar{position: fixed; top:0; right: 0; left: 0; z-index: 1030; margin-bottom: 0; border:none;}
+      .navbar-inner{-webkit-box-shadow: 0 1px 10px rgba(0,0,0,0.1); -moz-box-shadow: 0 1px 10px rgba(0,0,0,0.1); box-shadow: 0 1px 10px rgba(0,0,0,0.1); background-image: linear-gradient(to bottom,#fff,#f2f2f2); background-repeat: repeat-x; border-bottom: 1px solid #d4d4d4;background-color:#fafafa; height:40px;}
+      .navbar .brand{ padding-top:5px; display: block; float: left; font-size: 20px; font-weight: 200; color: #777; text-shadow: 0 1px 0 #fff;}
+      .navbar span{font-size:16px; padding-top:8px; color:#999; font-weight:300; display:inline-block; padding-left:10px;}
+  body
+    
+    .navbar
+      .navbar-inner
+        .container-fluid
+          .row
+            .col-md-12
+              a.brand(href="/") json.com { }
+              span cheat sheet v1.3
+    .container-fluid
+      .row
+        .col-md-3
+          h4 data types
+          table.table.table-striped
+            thead
+                tr
+                  th name
+                  th example
+              tbody
+                tr
+                  td(rowspan='2') number
+                  td var myNum = 123.456;
+                tr
+                  td series of numbers; decimals ok; double-precision floating-point format
+                tr
+                  td(rowspan='2') string
+                  td var myString = "abcdef";
+                tr
+                  td series of characters (letters, numbers, or symbols); double-quoted UTF-8 with backslash escaping
+                tr
+                  td(rowspan='2') boolean
+                  td var myBool = true;
+                tr
+                  td true or false
+                tr
+                  td(rowspan='2') array
+                  td var myArray = [ "a", "b", "c", "d" ];
+                tr
+                  td sequence of comma-separated values (any data type); enclosed in square brackets
+                tr
+                  td(rowspan='2') object
+                  td var myObject = { "id": 7 };
+                tr
+                  td unordered collection of comma-separated key/value pairs; enclosed in curly braces; properties (keys) are distinct strings
+                tr
+                  td(rowspan='2') null
+                  td var myNull = null;
+                tr
+                  td variable with null (empty) value
+                tr
+                  td(rowspan='2') undefined
+                  td var myUndefined;
+                tr
+                  td variable with no value assigned
+
+        .col-md-3
+          h4 objects
+          pre.prettyprint.lang-js.
+            var myObject = {
+              "first": "John",
+              "last": "Doe",
+              "age": 39,
+              "sex": "male",
+              "salary": 70000,
+              "registered": true
+            };
+          h5 access object properties
+          p
+            code myObject.sex
+            span.space returns 
+            em "male"
+          p
+            code myObject["age"]
+            span.space returns 
+            em 39
+          p
+            code myObject[0]
+            span.space returns 
+            em "John"
+          p
+            code myObject.something
+            span.space returns 
+            em undefined
+          p
+            code myObject[6]
+            span.space returns 
+            em undefined
+          h4 arrays
+          pre.prettyprint.lang-js.
+            var myArray = [
+              "John",
+              "Doe",
+              39,
+              "M",
+              70000,
+              true
+            ];
+          h5 access array elements
+          p
+            code myArray[1]
+            span.space returns 
+            em "Doe"
+          p
+            code myArray[5]
+            span.space returns 
+            em true
+          p
+            code myArray[6]
+            span.space returns 
+            em undefined
+        .col-md-3
+          h4 array of objects
+          pre.prettyprint.lang-js.
+            var myArray = [
+              {
+                "first": "John",
+                "last": "Doe",
+                "age": 39,
+                "sex": "male",
+                "salary": 70000,
+                "registered": true
+              },
+              {
+                "first": "Jane",
+                "last": "Smith",
+                "age": 42,
+                "sex": "female",
+                "salary": 80000,
+                "registered": true
+              },
+              {
+                "first": "Amy",
+                "last": "Burnquist",
+                "age": 29,
+                "sex": "female",
+                "salary": 60000,
+                "registered": false
+              }
+            ];
+          h5 access array elements
+          p
+            code myArray[0]
+            span.space returns 
+            em { "fist": "John", "last": "Doe" ... }
+          p
+            code myArray[1]
+            span.space returns 
+            em { "fist": "Jane", "last": "Smith" ... }
+          p
+            code myArray[1].first
+            span.space returns 
+            em "Jane"
+          p
+            code myArray[1][2]
+            span.space returns 
+            em 42
+          p
+            code myArray[2].registered
+            span.space returns 
+            em false
+          p
+            code myArray[3]
+            span.space returns 
+            em undefined
+          p
+            code myArray[3].sex
+            span.space error: "cannot read property..."
+        .col-md-3
+          h4 nested objects and arrays
+          pre.prettyprint.lang-js.
+            var myObject = {
+              "ref": {
+                "first": 0,
+                "last": 1,
+                "age": 2,
+                "sex": 3,
+                "salary": 4,
+                "registered": 5
+              },
+              "jdoe1": [
+                "John",
+                "Doe",
+                39,
+                "male",
+                70000,
+                true
+              ],
+              "jsmith1": [
+                "Jane",
+                "Smith",
+                42,
+                "female",
+                80000,
+                true
+              ]
+            };
+          h5 access nested elements
+          p
+            code myObject.ref.first
+            span.space returns 
+            em 0
+          p
+            code myObject.jdoe1
+            span.space returns 
+            em [ "John", "Doe", 39 ... ]
+          p
+            code myObject[2]
+            span.space returns 
+            em [ "Jane", "Smith", 42 ... ]
+          p
+            code myObject.jsmith1[3]
+            span.space returns 
+            em "female"
+          p
+            code myObject[1][5]
+            span.space returns 
+            em true
+          p
+            code myObject.jdoe1[myObject.ref.last]
+            span.space returns 
+            em "Doe"
+          p
+            code myObject.jsmith1[myObject.ref.age]
+            span.space returns 
+            em 42
+
+    
+    }

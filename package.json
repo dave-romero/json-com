@@ -1,0 +1,24 @@
+{
+  "name": "json",
+  "author": "",
+  "version": "0.1.0",
+  "domains": [
+    "www.json.com",
+    "json.com"
+  ],
+  "scripts": {
+    "start": "server.js"
+  },
+  "engines": {
+    "node": "0.10.x",
+    "npm": "1.2.x"
+  },
+  "dependencies": {
+    "express": "3.2.0",
+    "html-to-text": "0.0.6",
+    "jade": "0.29.0",
+    "nib": "0.9.1",
+    "poet": "0.2.7",
+    "stylus": "^0.32.1"
+  }
+}

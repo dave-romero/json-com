@@ -1,0 +1,154 @@
+extend layout
+block head
+  title JSON Array
+  meta(name='description', content='JSON is a light-weight text-based open standard designed for human-readable data. It is the most widely used format for exchanging data on the web.')
+block sidebar
+  a.toc_title(href='#json-array') JSON Array
+  ul.toc_section
+    li: a(href='#typed-form') Typed Form
+    li: a(href='#internal-form') Internal Form
+  a.toc_title(href='#array-examples') Array Examples
+  ul.toc_section
+    li: a(href='#empty-array') Empty Array
+    li: a(href='#array-of-strings') Array of Strings
+    li: a(href='#array-of-numbers') Array of Numbers
+    li: a(href='#array-of-booleans') Array of Booleans
+    li: a(href='#array-of-arrays') Array of Arrays
+    li: a(href='#array-of-objects') Array of Objects
+    li: a(href='#mixed-array') Array with Mixed Types
+  include includes/sidebar-footer
+block supplement
+  include includes/sidebar-posts
+block content
+  
+  h1#json-array JSON Array
+  p An array is an ordered list of values. Arrays offer the convenience of storing multiple values in a single variable and are among the oldest and most important data structures. Arrays are used by almost all programming languages.
+  
+  h3#typed-form Typed Form
+  p When typed, an array is represented as open and closed brackets: 
+    tt []
+    span which may contain a comma-separated list of values
+    tt [ "a", "b", "c" ]
+    . These values can be any JSON data type: 
+    tt string
+    , 
+    tt number
+    ,
+    tt boolean
+    , 
+    tt object
+    , 
+    tt array
+    , 
+    tt null
+    .
+  pre var myArray = [ "a", "b", "c" ];
+
+  h3#internal-form Internal Form
+  p Each value of an array is internally identified by an index (also known as <i>key</i>). Arrays are stored so the position of each value in the array can be easily accessed from its index.  An index is an integer 0 or greater. 
+    tt [0]
+  p
+    | Access "a" at index 0 &#8594;  
+    tt myArray[0]
+    code: b "a"
+  p
+    | Access "b" at index 1 &#8594; 
+    tt myArray[1]
+    code: b "b"
+  p
+    | Access "c" at index 2 &#8594; 
+    tt myArray[2]
+    code: b "c"
+
+  h2#array-examples Array Examples  
+  h3#empty-array Empty Array
+  p Empty arrays are declared with open and closed brackets.  Attemping to access values of an empty array will always return "undefined".
+  pre var myArray = [];
+  tt myArray[0]
+  code: b undefined
+  h3#array-of-strings Array of Strings
+  p Arrays are a convenient structure for storing values of like type.  In this case, we've declared an array with five strings.  Remember, indexes begin at 0, so these strings can be accessed at indexes 0, 1, 2, 3, 4.
+  pre var myArray = [ "text1", "text2", "text3", "text4", "text5" ];
+  p
+    tt myArray[0]
+    code: b text1
+  p
+    tt myArray[2]
+    code: b text3
+  h3#array-of-numbers Array of Numbers
+  p Arrays can store numbers just as well.  This is a convenient structure when needing to store numbers that will later take part in a calculation.  Unlike strings, number values are not declared using quotations.
+  pre var myArray = [ 1, 3, 5, 7, 9 ];
+  p
+    tt myArray[0]
+    code: b 1
+  pre var myOtherArray = [ 2, 4, 6, 8, 10 ];
+  p
+    tt myArray[0] + myOtherArray[0]
+    code: b 3
+  h3#array-of-booleans Array of Booleans
+  p Arrays also support values with the boolean (true or false) data type.
+  pre var myArray = [ true, true, false, false, true ];
+  p
+    tt myArray[2]
+    code: b false
+  p Values in an array can be treated the same as values that are declared as standalone variables.
+  p
+    tt myArray[1] == true && myArray[2] == true
+    code: b false
+  h3#array-of-arrays Array of Arrays
+  p An array of arrays, also known as a multidimensional array, is an array containing one or more arrays.  Arrays can be many levels deep. However, arrays beyond three levels deep are hard to manage.
+  pre var myArray = [ [], [], [], [], [] ];
+  p
+    tt myArray[0]
+    code: b []
+  p When accessing a value beyond the first level of a multidimensional array, it is necessary to use an index to reference each level of the array.
+  pre.
+    var myOtherArray = [ 
+      [ "a", "b", "c" ], 
+      [ "x", "y", "z" ] 
+    ];
+  p
+    tt myOtherArray[0]
+    code: b [ "a", "b", "c" ]
+  p
+    tt myOtherArray[1][0]
+    code: b x
+  h3#array-of-objects Array of Objects
+  p Arrays of objects are convenient for storing lists of things that contain multiple values each.  This is a commmon JSON structure and is often used when retreiving lists of things from APIs and databases.  For example, an array of objects would be useful when storing or retreiving a list of employees, list of books, list of albums, etc..
+  pre var myArray = [ {}, {}, {}, {}, {} ];
+  p
+    tt myArray[0]
+    code: b {}
+  pre.
+    var myOtherArray = [ 
+      {
+        "first" : "John",
+        "last" : "Smith"
+      }, 
+      {
+        "first" : "Jane",
+        "last" : "Doe"
+      }
+    ];
+  p
+    tt myOtherArray[0]
+    code: b { "first" : "John", "last" : "Smith" }
+  p
+    tt myOtherArray[0].first
+    code: b John
+  h3#mixed-array Array with Mixed Data Types
+  p JavaScript's' type inference (as in 'data type') will automatically determine the data type of declared values, whether in an array, object or standalone variable.  Values of varying types can be stored alongside each other in both arrays and objects. 
+  pre var myArray = [ "text", 14, [], null, {} ];
+  p
+    tt myArray[2]
+    code: b null
+  div#disqus_thread
+    script
+      var disqus_shortname = 'json-com'; // required: replace example with your forum shortname
+      (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    
+    

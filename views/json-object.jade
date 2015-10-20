@@ -1,0 +1,203 @@
+extend layout
+block head
+  title JSON Object
+  meta(name='description', content='JSON is a light-weight text-based open standard designed for human-readable data. It is the most widely used format for exchanging data on the web.')
+block sidebar
+  a.toc_title(href='#json-object') JSON Object
+  ul.toc_section
+    li: a(href='#typed-form') Typed Form
+    li: a(href='#internal-form') Internal Form
+  a.toc_title(href='#object-examples') Object Examples
+  ul.toc_section
+    li: a(href='#empty-object') Empty Object
+    li: a(href='#object-with-strings') Object with Strings
+    li: a(href='#object-with-numbers') Object with Numbers
+    li: a(href='#object-with-booleans') Object with Booleans
+    li: a(href='#object-with-arrays') Object with Arrays
+    li: a(href='#object-with-objects') Object with Objects
+  include includes/sidebar-footer
+block supplement
+  include includes/sidebar-posts
+block content
+  h1#json-object JSON Object
+  p An object is an unordered collection of comma-delimited name/value pairs. Within each pair the colon ":" character separates the name from the value.  Names must be strings and unique within the object.  Names are also refered to as 'keys' or 'properties'.
+  h3#typed-form Typed Form
+  p When typed, an object is represented as open and closed curly brackets: 
+    tt {}
+    span which may contain a comma-separated list of name/values pairs 
+    tt { "first": "John, "last": "Smith, "age": 27 }
+    . These values can be any JSON data type: 
+    tt string
+    , 
+    tt number
+    ,
+    tt boolean
+    , 
+    tt object
+    , 
+    tt array
+    , 
+    tt null
+    .
+  pre.
+    var myObject = {
+      "name": "John Smith,
+      "age": 27
+    };
+
+  h3#internal-form Internal Form
+  p Object values can be accessed like an array using an index, using the property name in quotes, or by following the object's variable name with a period and the property name. 
+  p
+    | Access "name" at index 0 &#8594;  
+    tt myObject[0]
+    code: b "John Smith"
+  p
+    | Access "age" at index 1 &#8594; 
+    tt myObject[1]
+    code: b 27
+  p: b -or-
+  p
+    | Access "name" with array notation &#8594;  
+    tt myObject["name"]
+    code: b "John Smith"
+  p
+    | Access "age" with array notation &#8594; 
+    tt myObject.["age"]
+    code: b 27
+  p: b -or-
+  p
+    | Access "name" with dot notation &#8594;  
+    tt myObject.name
+    code: b "John Smith"
+  p
+    | Access "age" with dot notation &#8594; 
+    tt myObject.age
+    code: b 27
+
+  h2#object-examples Object Examples  
+  h3#empty-object Empty Object
+  p Declare an empty object with open and closed braces.  Attemping to access values of an empty object will always return "undefined".
+  pre var myObject = {};
+  p
+    tt myObject[0]
+    code: b undefined
+  p
+    tt myObject["name"]
+    code: b undefined
+  p
+    tt myObject.name
+    code: b undefined
+  h3#object-with-strings Object with Strings
+  p JSON objects with string variables are often referred to as dictionaries. When declaring a string value inside an object, the string must be wrapped in double quotes.
+  pre.
+    var myObject = {
+      "title": "Bill and Ted's Excellent Adventure",
+      "director": "Stephen Herek"
+    };
+  p
+    tt myObject[1]
+    code: b "Stephen Herek"
+  p
+    tt myObject["title"]
+    code: b "Bill and Ted's Excellent Adventure"
+  p
+    tt myObject.director
+    code: b "Stephen Herek"
+  p Strings values are backslash escaped with the following characters:
+  pre.
+    \b  Backspace 
+    \f  Form feed
+    \n  New line
+    \r  Carriage return
+    \t  Tab
+    \'  Apostrophe or single quote (only valid in single quoted JSON strings)
+    \"  Double quote (only valid in double quoted JSON strings)
+    \\  Backslash caracter
+  h3#object-with-numbers Object with Numbers
+  p Numbers in JSON objects use double precision floating-point format.  Octal and hexadecimal formats are not used.  Neither are NaN or Infinity.  Acceptable number types are positive or negative integers (digits 0-9), fractions (.3, .283934, etc.), and exponents (e, e+, e-,E, E+, E-).
+  pre var myObject = {
+    "integer": 42,
+    "fraction": .2811,
+    "exponent": 5.56789e+0
+  };
+  p
+    tt myObject[0] + myObject["fraction"]
+    code: b 42.2811
+  p
+    tt myObject.exponent
+    code: b 5.56789
+
+  h3#object-with-booleans Object with Booleans
+  p Objects may contain boolean, or true/false values.  Ddouble quotes are not necessary when assingin a boolean value.
+  pre.
+    var myObject = {
+      "submitted": true,
+      "validated": false
+    };
+  p
+    tt myObject.submitted
+    code: b true
+  p
+    tt myObject[1]
+    code: b false
+
+  h3#object-with-arrays Object with Arrays
+  p Objects can be multidimmensional, containing arrays as values.  These 'nested' arrays are used for defining lists of values inside an object.
+  pre.
+    var myObject = {
+      "friends": [ "Peter", "Paul", "Mary" ],
+      "numbers": [ 7, 21, 42 ],
+      "objects": [ { "id": "a" }, { "id": b }, { "id": "c" }]
+    };
+  p
+    tt myObject.friends
+    code: b [ "Peter", "Paul", "Mary" ]
+  p
+    tt myObject.numbers[1]
+    code: b 21
+  p
+    tt myObject.objects[0]
+    code: b { "id": "a" }
+  p
+    tt myObject.objects[0].id
+    code: b a
+
+  h3#object-with-objects Object with Objects (Nested Objects)
+  p Objects can be declared inside objects and may create heirarchies for as many levels as needed.  These are often referred to as nested objects.
+  pre.
+    var myObject = {
+      "john": {
+        "age": 27,
+        "hair": "brown",
+        "eyes": "blue"
+        "registered" : false,
+        "interests": [ "geology", "physics", "computers" ]
+      },
+      "jane": {
+        "age": 26,
+        "hair": "blonde",
+        "eyes": "hazel",
+        "registered": true,
+        "interests": [ "sports", "caligraphy", "engineering" ]
+      }  
+    };
+  p
+    tt myObject.jane.age
+    code: b 26
+  p
+    tt myObject[0][1]
+    code: b "brown"
+  p
+    tt myObject.john.interests[0]
+    code: b "geology"
+
+  div#disqus_thread
+    script
+      var disqus_shortname = 'json-com'; // required: replace example with your forum shortname
+      (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    
+    

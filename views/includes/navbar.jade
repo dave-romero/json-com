@@ -1,0 +1,16 @@
+div.container
+  div.navbar.navbar-fixed-top
+    div.navbar-inner
+      a.brand(href="/") json.com { }
+      ul.nav
+        li: a(href="/") JSON
+        li: a(href="/json-array") JSON Array
+        li: a(href="/json-object") JSON Object
+        li: a(href="/json-example") JSON Example
+        li: a(href="/json-tutorial") JSON Tutorial
+        
+script
+  var s1 = '/' + document.URL.split('/')[3]
+  $('.navbar a').each(function(){
+    if($(this).attr('href') == s1){ $(this).parents('li').addClass('active')}
+  });

@@ -1,0 +1,21 @@
+//- <a href="https://twitter.com/daveromero" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @daveromero</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+h3(style='margin-top:15px;') JSON Cheat Sheet v1.3
+p(style='margin-bottom:5px;') Get your JSON up to speed fast with this excellent cheat.
+a(href="https://gumroad.com/l/SdLKY").gumroad-button Download the Cheat Sheet
+
+//
+  - each cat in categoryList
+    a.toc_title(href=categoryUrl(cat)) #{cat}
+    
+a.toc_title(href="/json-tutorial/") JSON Tutorial
+include tags
+ul.toc_section
+  - each post in postList
+    li
+      a(href=post.url) #{post.title}
+//
+  a.toc_title Tags
+  ul.toc_section
+    - each tag in tagList
+      li: a(href=tagUrl(tag)) #{tag}

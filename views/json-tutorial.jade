@@ -1,0 +1,15 @@
+extends layout
+block head
+  title JSON Tutorial
+  meta(name='description', content='JSON is a light-weight text-based open standard designed for human-readable data. It is the most widely used format for exchanging data on the web.')
+block sidebar
+  include includes/sidebar-footer
+block supplement
+  include includes/sidebar-posts
+block content
+  - var posts = getPosts(0,10)
+  - var page  = 1
+  - each post in posts
+    include includes/post-preview
+
+  include includes/pagination

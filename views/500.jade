@@ -1,0 +1,13 @@
+extends layout
+block head
+  title 500 An Error Occured | JSON - JavaScript Object Notation
+  meta(name='description', content='JSON is a light-weight text-based open standard designed for human-readable data. It is the most widely used format for exchanging data on the web.')
+block sidebar
+  include includes/sidebar-footer
+block supplement
+  include includes/sidebar-posts
+block content
+  h1 #{title}
+  p #{error}
+  p Please try our home page for more useful content a links: 
+    a(href='http://www.json.com') www.json.com
